@@ -1,0 +1,86 @@
+﻿@model List<ListBookHistoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>ISBN No</th>
+        <th>Başlık</th>
+        <th>Yazar</th>
+        <th>Yayın Tarihi</th>
+        <th>Durum</th>
+        <th>Dönem</th>
+        <th>İşlem</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.ISBN</td>
+            <td>@item.Title</td>
+            <td>@item.Author</td>
+            <td>@item.PublicationYear</td>
+            <td>@item.Status</td>
+            <td>@item.HistoricalPeriod</td>
+            <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/BookHistory/BorrowBook/" onclick="borrowBook('@item.Id')">Ödünç Al</a>
+                        <a class="dropdown-item" href="#" onclick="returnBook('@item.Id')">İade Et</a>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+    }
+
+</table>
+<a href="/BookHistory/AddBookHistory/" class="btn mb-1 btn-rounded btn-outline-warning">Yeni Kitap Ekle </a>
+
+<script>
+    function borrowBook(bookId) {
+        fetch('https://localhost:44350/api/BookHistory/borrow', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ bookId: bookId })
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Kitap ödünç alındı.');
+                    window.location.reload(); // Sayfayı yenile
+                } else {
+                    console.error('Kitap ödünç alınamadı.');
+                }
+            })
+            .catch(error => console.error('Hata:', error));
+    }
+
+    function returnBook(bookId) {
+        fetch('https://localhost:44350/api/BookHistory/return', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ bookId: bookId })
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Kitap iade edildi.');
+                    window.location.reload(); // Sayfayı yenile
+                } else {
+                    console.error('Kitap iade edilemedi.');
+                }
+            })
+            .catch(error => console.error('Hata:', error));
+    }
+</script>
+
