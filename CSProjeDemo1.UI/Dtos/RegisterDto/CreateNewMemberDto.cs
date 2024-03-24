@@ -1,0 +1,26 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CSProjeDemo1.UI.Dtos.RegisterDto
+{
+    public class CreateNewMemberDto
+    {
+        [Required(ErrorMessage = "Ad Alanı Gereklidir")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Soyad Alanı Gereklidir")]
+        public string Surname { get; set; }
+
+        [Required(ErrorMessage = "Kullanıcı Adı Gereklidir")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Mail Alanı Gereklidir")]
+        public string Mail { get; set; }
+
+        [Required(ErrorMessage = "Şifre Alanı Gereklidir")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Şifre Tekrar Alanı Gereklidir")]
+        [Compare("Password", ErrorMessage = "Şifreler Uyuşmuyor")]
+        public string ConfirmPassword { get; set; }
+    }
+}
