@@ -1,15 +1,15 @@
-﻿using CSProjeDemo1.UI.Dtos.BookHistoryDto;
-using CSProjeDemo1.UI.Dtos.BookNovelDto;
+﻿using CSProjeDemo1.UI.Dtos.BookNovelDto;
+using CSProjeDemo1.UI.Dtos.BookScienceDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace CSProjeDemo1.UI.Controllers
 {
-    public class BookNovelController : Controller
+    public class BookScienceController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public BookNovelController(IHttpClientFactory httpClientFactory)
+        public BookScienceController(IHttpClientFactory httpClientFactory)
         {
 
             _httpClientFactory = httpClientFactory;
@@ -19,21 +19,21 @@ namespace CSProjeDemo1.UI.Controllers
         {
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44350/api/BookNovel");
+            var responseMessage = await client.GetAsync("https://localhost:44350/api/BookScience");
 
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ListBookNovelDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ListBookScienceDto>>(jsonData);
                 return View(values);
             }
             return View();
         }
 
-        public async Task<IActionResult> DeleteBookNovel(int id)
+        public async Task<IActionResult> DeleteBookScience(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44350/api/BookNovel/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:44350/api/BookScience/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -43,18 +43,18 @@ namespace CSProjeDemo1.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddBookNovel()
+        public IActionResult AddBookScience()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBookNovel(CreateBookNovelDto createBookNovelDto)
+        public async Task<IActionResult> AddBookScience(CreateBookScienceDto createBookScienceDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createBookNovelDto);
+            var jsonData = JsonConvert.SerializeObject(createBookScienceDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44350/api/BookNovel", content);
+            var responseMessage = await client.PostAsync("https://localhost:44350/api/BookScience", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -63,15 +63,15 @@ namespace CSProjeDemo1.UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateBookNovel(int id)
+        public async Task<IActionResult> UpdateBookScience(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44350/api/BookNovel/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:44350/api/BookScience/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateBookNovelDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateBookScienceDto>(jsonData);
                 return View(values);
 
             }
@@ -79,12 +79,12 @@ namespace CSProjeDemo1.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateBookNovel(UpdateBookNovelDto updateBookNovelDto)
+        public async Task<IActionResult> UpdateBook(UpdateBookScienceDto updateBookScienceDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateBookNovelDto);
+            var jsonData = JsonConvert.SerializeObject(updateBookScienceDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44350/api/BookNovel/", content);
+            var responseMessage = await client.PutAsync("https://localhost:44350/api/BookScience/", content);
 
             if (responseMessage.IsSuccessStatusCode)
             {

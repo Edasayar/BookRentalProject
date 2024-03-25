@@ -13,9 +13,10 @@
         <th>Yazar</th>
         <th>Yayın Tarihi</th>
         <th>Durum</th>
-        <th>Dönem</th>
+       
         <th>Tür</th>
         <th>Sayfa Sayısı</th>
+        <th>İşlem</th>
 
     </tr>
     @foreach (var item in Model)
@@ -28,18 +29,18 @@
             <td>@item.Author</td>
             <td>@item.PublicationYear</td>
             <td>@item.Status</td>
-            <td>@item.HistoricalPeriod</td>
+          
             <td>@item.Genre</td>
             <td>@item.NumberOfPages</td>
-            @* <td>
+            <td>
                     <div class="btn-group mb-1">
                         <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/AdminRoom/DeleteRoom/@item.RoomId">Sil</a> <a class="dropdown-item" href="/AdminRoom/UpdateRoom/@item.RoomId">Güncelle</a>
+                        <a class="dropdown-item" href="/BookNovel/DeleteBookNovel/@item.Id">Sil</a> <a class="dropdown-item" href="/BookNovel/UpdateBookNovel/@item.Id">Güncelle</a>
 
                         </div>
                     </div>
-                </td> *@
+                </td>
 
         </tr>
     }

@@ -18,13 +18,26 @@ builder.Services.AddScoped<IBookNovelDal, EfBookNovelDal>();
 builder.Services.AddScoped<IBookScienceService, BookScienceService>();
 builder.Services.AddScoped<IBookScienceDal, EfBookScienceDal>();
 
+builder.Services.AddScoped<ILibraryService, LibraryService>();
+builder.Services.AddScoped<ILibraryDal, EfLibraryDal>();
+
 builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<IMemberDal, EfMemberDal>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("", opts =>
+    {
+        opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers().AddNewtonsoftJson(opt =>
 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -39,7 +52,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("LibraryApiCors");
 app.UseAuthorization();
 
 app.MapControllers();

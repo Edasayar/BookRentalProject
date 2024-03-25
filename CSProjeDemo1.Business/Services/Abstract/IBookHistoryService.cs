@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace CSProjeDemo1.Services.Abstract
 {
-    public interface ILibraryService:IGenericService<Library>
+    public interface IBookHistoryService:IGenericService<BookHistory>
     {
-        List<BaseBook> GetBooks();
-        List<Member> GetMembers();
-
+        void TBorrowBook(Member member, BookHistory book);
+        void TReturnBook(Member member, BookHistory book);
     }
 }

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSProjeDemo1", "CSProjeDemo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSProjeDemo1.UI", "CSProjeDemo1.UI\CSProjeDemo1.UI.csproj", "{7387C724-7DE0-45DE-8E26-BD4AF4427FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeDemo1.API", "ProjeDemo1.API\ProjeDemo1.API.csproj", "{D24B3FF6-550A-4A60-A173-61026182ED62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjeDemo1.API", "ProjeDemo1.API\ProjeDemo1.API.csproj", "{D24B3FF6-550A-4A60-A173-61026182ED62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeDemo1.EntityLayer", "ProjeDemo1.EntityLayer\ProjeDemo1.EntityLayer.csproj", "{76258A10-B72D-4124-9F2D-C5FBCFB33D70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjeDemo1.EntityLayer", "ProjeDemo1.EntityLayer\ProjeDemo1.EntityLayer.csproj", "{76258A10-B72D-4124-9F2D-C5FBCFB33D70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

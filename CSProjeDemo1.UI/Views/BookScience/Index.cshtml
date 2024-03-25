@@ -1,0 +1,48 @@
+﻿@model List<ListBookScienceDto>
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+        int count = 0;
+    }
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>ISBN No</th>
+            <th>Kitap Adı</th>
+            <th>Yazar</th>
+            <th>Yayın Tarihi</th>
+            <th>Durum</th>
+            <th>Alan</th>
+           
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.ISBN</td>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.PublicationYear</td>
+                <td>@item.Status</td>
+                <td>@item.Field</td>
+             
+                <td>
+                    <div class="btn-group mb-1">
+                        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/BookScience/DeleteBookScience/@item.Id">Sil</a> <a class="dropdown-item" href="/BookScience/UpdateBookScience/@item.Id">Güncelle</a>
+
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+<a href="/BookScience/AddBookScience/" class="btn mb-1 btn-rounded btn-outline-warning">Yeni Kitap Ekle </a>
+
+

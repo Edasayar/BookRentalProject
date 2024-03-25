@@ -13,33 +13,33 @@ namespace CSProjeDemo1.Services.Concrete
     {
         private readonly IMemberDal _memberDal;
 
-        public MemberService(IMemberDal memberDal)
+        public MemberService()
         {
-            _memberDal = memberDal;
+            
         }
         public void TDelete(Member t)
         {
-           _memberDal.Delete(t);
+            throw new NotImplementedException();
         }
 
         public Member TGetById(int id)
         {
-            return _memberDal.GetById(id);
+            throw new NotImplementedException();
         }
 
         public List<Member> TGetList()
         {
-            return _memberDal.GetList();
+            throw new NotImplementedException();
         }
 
         public void TInsert(Member t)
         {
-            _memberDal.Insert(t);
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Member t)
         {
-            _memberDal.Update(t);
+            throw new NotImplementedException();
         }
     }
 }

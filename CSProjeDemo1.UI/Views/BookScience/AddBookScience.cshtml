@@ -1,6 +1,6 @@
-﻿@model CreateBookNovelDto
+﻿@model CreateBookScienceDto
 @{
-    ViewData["Title"] = "AddBookHistory";
+    ViewData["Title"] = "AddBookScience";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
@@ -24,14 +24,12 @@
     <label>Yayın Tarihi</label>
     <input type="date" asp-for="PublicationYear" class="form-control" />
     <br />
-    <label>Tür</label>
-    <input type="text" asp-for="Genre" class="form-control" />
+    <label>Alan</label>
+    <input type="text" asp-for="Field" class="form-control" />
     <br />
-    <label>Sayfa Sayısı</label>
-    <input type="text" asp-for="NumberOfPages" class="form-control" />
-    <br />
+  
 
 
-    <button class="btn mb-1 btn-rounded btn-outline-warning">Kitap Ekle </button>
+    <button class="btn mb-1 btn-rounded btn-outline-warning">Yeni Kitap Ekle </button>
 </form>
 

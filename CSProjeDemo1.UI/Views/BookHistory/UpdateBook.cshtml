@@ -1,0 +1,30 @@
+﻿@model UpdateBookHistoryDto
+@{
+    ViewData["Title"] = "UpdateBook";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <label>ISBN No</label>
+    <input type="text" asp-for="ISBN" class="form-control" />
+    <br />
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Yazar</label>
+    <input type="text" asp-for="Author" class="form-control" />
+    <br />
+    <label>Yayın Tarihi</label>
+    <input type="date" asp-for="PublicationYear" class="form-control" />
+    <br />
+    <label>Durum</label>
+    <input type="text" asp-for="Status" class="form-control" />
+    <br />
+    <label>Dönem</label>
+    <input type="text" asp-for="HistoricalPeriod" class="form-control" />
+    <br />
+   
+    <button class="btn mb-1 btn-rounded btn-outline-warning">Güncelle </button>
+</form>
+

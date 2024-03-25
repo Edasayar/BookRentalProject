@@ -32,11 +32,22 @@
                 <div class="btn-group mb-1">
                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/BookHistory/DeleteBook/@item.Id">Sil</a> <a class="dropdown-item" href="/BookHistory/UpdateBook/@item.Id">Güncelle</a>
+
+                    </div>
+                </div>
+            </td>
+
+
+           @*  <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
                         <a class="dropdown-item" href="/BookHistory/BorrowBook/" onclick="borrowBook('@item.Id')">Ödünç Al</a>
                         <a class="dropdown-item" href="#" onclick="returnBook('@item.Id')">İade Et</a>
                     </div>
                 </div>
-            </td>
+            </td> *@
 
         </tr>
     }
