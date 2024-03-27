@@ -16,5 +16,20 @@ namespace CSProjeDemo1.EntityFramework
         {
             
         }
+
+        public List<BaseBook> GetAvailableBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<BaseBook> GetBorrowedBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Member> GetMembers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

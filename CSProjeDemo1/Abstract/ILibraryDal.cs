@@ -9,6 +9,8 @@ namespace CSProjeDemo1.Abstract
 {
     public interface ILibraryDal:IGenericDal<Library>
     {
-
+        List<BaseBook> GetAvailableBooks();
+        List<BaseBook> GetBorrowedBooks();
+        List<Member> GetMembers();
     }
 }

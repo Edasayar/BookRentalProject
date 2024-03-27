@@ -21,8 +21,8 @@
         <option value="2">Mevcut Değil</option>
     </select>
     <br />
-    <label>Yayın Tarihi</label>
-    <input type="date" asp-for="PublicationYear" class="form-control" />
+    <label>Yayın Yılı</label>
+    <input type="number" asp-for="PublicationYear" class="form-control" min="1900" max="2100" step="1" />
     <br />
     <label>Tür</label>
     <input type="text" asp-for="Genre" class="form-control" />

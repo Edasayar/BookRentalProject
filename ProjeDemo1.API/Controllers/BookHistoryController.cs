@@ -51,10 +51,10 @@ namespace ProjeDemo1.API.Controllers
             return Ok(values);
         }
 
-        [HttpPost("borrow/{id}")] // borrow endpoint'i /{id} ile eşleşecek şekilde güncellendi
+        [HttpPost("borrow/{id}")] 
         public IActionResult BorrowBook(int id, [FromBody] BorrowBookRequest request)
         {
-            var book = _bookHistoryService.TGetById(id); // Kitap Id parametresi ile alınıyor
+            var book = _bookHistoryService.TGetById(id); 
             if (book != null)
             {
                 book.Status = CSProjeDemo1.Enums.Status.ÖdünçAlındı;

@@ -1,0 +1,40 @@
+﻿@model List<LibraryListMemberDto>
+@{
+    ViewData["Title"] = "MemberList";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Üye Numarası</th>
+   
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.MemberNumber</td>
+          
+           @*  <td>
+                <div class="btn-group mb-1">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/BookNovel/DeleteBookNovel/@item.Id">Sil</a> <a class="dropdown-item" href="/BookNovel/UpdateBookNovel/@item.Id">Güncelle</a>
+
+                    </div>
+                </div>
+            </td> *@
+
+        </tr>
+    }
+
+</table>
+

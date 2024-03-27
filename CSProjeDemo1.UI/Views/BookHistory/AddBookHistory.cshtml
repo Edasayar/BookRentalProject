@@ -16,14 +16,13 @@
     <br />
     <label>Durum</label>
     <select asp-for="Status" class="form-control">
-        <option value="">Seç</option>
-        <option value="Available">Available</option>
-        <option value="Reserved">Reserved</option>
-        <option value="Borrowed">Borrowed</option>
+        <option value="0">Mevcut</option>
+        <option value="1">Ödünç Alındı</option>
+        <option value="2">Mevcut Değil</option>
     </select>
     <br />
-    <label>Yayın Tarihi</label>
-    <input type="date" asp-for="PublicationYear" class="form-control" />
+    <label>Yayın Yılı</label>
+    <input type="number" asp-for="PublicationYear" class="form-control" min="1900" max="2100" step="1" />
     <br />
     <label>Dönem</label>
     <input type="text" asp-for="HistoricalPeriod" class="form-control" />

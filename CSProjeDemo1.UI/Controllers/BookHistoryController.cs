@@ -78,7 +78,7 @@ namespace CSProjeDemo1.UI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(request);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44350/api/BookHistory/borrow", content);
+            var responseMessage = await client.PostAsync("https://localhost:44350/api/BookHistory/borrow/", content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

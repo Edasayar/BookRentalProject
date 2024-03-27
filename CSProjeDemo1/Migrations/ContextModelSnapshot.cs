@@ -59,8 +59,8 @@ namespace CSProjeDemo1.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("PublicationYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("PublicationYear")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
