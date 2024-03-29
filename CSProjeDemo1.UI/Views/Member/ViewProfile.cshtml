@@ -1,0 +1,31 @@
+﻿@model CSProjeDemo1.UI.Dtos.MemberDto.MemberDto
+@{
+    ViewData["Title"] = "ViewProfile";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kullanıcı Profili</title>
+</head>
+<body>
+    <h1>Kullanıcı Profili</h1>
+    <div>
+        <label>Adı:</label>
+        <span>@Model.FirstName</span>
+    </div>
+    <div>
+        <label>Soyadı:</label>
+        <span>@Model.LastName</span>
+    </div>
+    <div>
+        <label>Üye Numarası:</label>
+        <span>@Model.MemberNumber</span>
+    </div>
+</body>
+</html>
+
+

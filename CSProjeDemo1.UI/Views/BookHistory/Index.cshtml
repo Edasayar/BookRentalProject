@@ -40,7 +40,7 @@
                 <td><i class="fa fa-circle-o text-danger mr-2"></i>@item.Status</td>
             }
             <td>@item.HistoricalPeriod</td>
-            <td>
+            @* <td>
                 <div class="btn-group mb-1">
                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
                     <div class="dropdown-menu">
@@ -48,18 +48,20 @@
 
                     </div>
                 </div>
-            </td>
+            </td> *@
 
 
-           @*  <td>
+            <td>
                 <div class="btn-group mb-1">
                     <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">İşlem</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/BookHistory/BorrowBook/" onclick="borrowBook('@item.Id')">Ödünç Al</a>
+                        <a class="dropdown-item" href="/Member/BorrowBook?bookId=@item.Id" onclick="borrowBook('@item.Id')">Ödünç Al</a>
+
+
                         <a class="dropdown-item" href="#" onclick="returnBook('@item.Id')">İade Et</a>
                     </div>
                 </div>
-            </td> *@
+            </td>
 
         </tr>
     }
@@ -67,14 +69,15 @@
 </table>
 <a href="/BookHistory/AddBookHistory/" class="btn mb-1 btn-rounded btn-outline-warning">Yeni Kitap Ekle </a>
 
-@* <script>
+<script>
     function borrowBook(bookId) {
-        fetch('https://localhost:44350/api/BookHistory/borrow', {
+        var data = { bookId: bookId }; // Kitap ID'sini içeren bir JSON nesnesi oluşturun
+        fetch('https://localhost:44350/api/MemberApi/borrow/' + bookId, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ bookId: bookId })
+            body: JSON.stringify(data) // Kitap ID'sini içeren JSON verisini gönderin
         })
             .then(response => {
                 if (response.ok) {
@@ -86,6 +89,8 @@
             })
             .catch(error => console.error('Hata:', error));
     }
+
+
 
     function returnBook(bookId) {
         fetch('https://localhost:44350/api/BookHistory/return', {
@@ -105,5 +110,5 @@
             })
             .catch(error => console.error('Hata:', error));
     }
-</script> *@
+</script>
 

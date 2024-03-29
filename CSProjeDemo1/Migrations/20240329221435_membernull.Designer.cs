@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSProjeDemo1.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240326143120_date")]
-    partial class date
+    [Migration("20240329221435_membernull")]
+    partial class membernull
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

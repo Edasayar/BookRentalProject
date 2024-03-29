@@ -1,12 +1,14 @@
 ﻿
 using CSProjeDemo1.UI.Dtos.BookHistoryDto;
 using CSProjeDemo1.UI.Dtos.BorrowRequestDTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace CSProjeDemo1.UI.Controllers
 {
+    [AllowAnonymous]
     public class BookHistoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

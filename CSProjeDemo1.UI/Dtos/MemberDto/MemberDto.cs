@@ -1,6 +1,6 @@
 ﻿namespace CSProjeDemo1.UI.Dtos.MemberDto
 {
-    public class MemberListDto
+    public class MemberDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

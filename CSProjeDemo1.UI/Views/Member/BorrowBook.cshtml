@@ -1,0 +1,14 @@
+﻿@model BorrowBookRequestDto
+@{
+    ViewData["Title"] = "BorrowBook";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h2>Kitap Ödünç Alma</h2>
+
+<p>Kitap ID: @Model.BookId</p>
+
+<form method="post" action="/Member/BorrowBook">
+    <input type="hidden" name="bookId" value="@Model.BookId" />
+    <button type="submit">Ödünç Al</button>
+</form>

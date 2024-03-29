@@ -29,12 +29,17 @@ namespace CSProjeDemo1.UI.Controllers
             {
                 return View();
             }
+
+            var random = new Random();
+            var memberNumber = random.Next(1000, 9999);
+
             var member = new Member()
             {
                 FirstName = createNewMemberDto.Name,
                 Email = createNewMemberDto.Mail,
                 LastName = createNewMemberDto.Surname,
                 UserName = createNewMemberDto.UserName,
+                MemberNumber= memberNumber
                 
 
             };

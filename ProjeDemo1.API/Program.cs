@@ -1,13 +1,16 @@
 using CSProjeDemo1.Abstract;
 using CSProjeDemo1.Concrete;
 using CSProjeDemo1.EntityFramework;
+using CSProjeDemo1.Entitys;
 using CSProjeDemo1.Services.Abstract;
 using CSProjeDemo1.Services.Concrete;
+using Microsoft.AspNetCore.Identity;
+using ProjeDemo1.EntityLayer.Entitys;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>();
-
+builder.Services.AddIdentity<Member, AppRole>().AddEntityFrameworkStores<Context>();
 
 builder.Services.AddScoped<IBookHistoryService, BookHistoryService>();
 builder.Services.AddScoped<IBookHistoryDal, EfBookHistoryDal>();

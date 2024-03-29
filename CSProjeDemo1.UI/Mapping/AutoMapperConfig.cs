@@ -3,7 +3,9 @@ using CSProjeDemo1.Entitys;
 using CSProjeDemo1.UI.Dtos.BookHistoryDto;
 using CSProjeDemo1.UI.Dtos.BookNovelDto;
 using CSProjeDemo1.UI.Dtos.BookScienceDto;
+using CSProjeDemo1.UI.Dtos.BorrowRequestDTO;
 using CSProjeDemo1.UI.Dtos.LoginDto;
+using CSProjeDemo1.UI.Dtos.MemberDto;
 using CSProjeDemo1.UI.Dtos.RegisterDto;
 
 namespace CSProjeDemo1.UI.Mapping
@@ -15,6 +17,7 @@ namespace CSProjeDemo1.UI.Mapping
             CreateMap<ListBookHistoryDto, BookHistory>().ReverseMap();
             CreateMap<CreateBookHistoryDto, BookHistory>().ReverseMap();
             CreateMap<UpdateBookHistoryDto, BookHistory>().ReverseMap();
+            CreateMap<BorrowBookRequestDto, BookHistory>().ReverseMap();
 
             CreateMap<CreateBookNovelDto, BookNovel>().ReverseMap();
             CreateMap<ListBookNovelDto, BookNovel>().ReverseMap();
@@ -26,6 +29,7 @@ namespace CSProjeDemo1.UI.Mapping
 
             CreateMap<CreateNewMemberDto, Member>().ReverseMap();
             CreateMap<LoginMemberDto, Member>().ReverseMap();
+            CreateMap<MemberDto, Member>().ReverseMap();
            
         }
     }

@@ -1,8 +1,10 @@
 ﻿using CSProjeDemo1.Entitys;
 using CSProjeDemo1.Services.Abstract;
+using CSProjeDemo1.Services.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjeDemo1.API.Dtos;
+using System.Security.Claims;
 
 namespace ProjeDemo1.API.Controllers
 {
@@ -11,9 +13,11 @@ namespace ProjeDemo1.API.Controllers
     public class MemberApiController : ControllerBase
     {
         private readonly IMemberService _memberService;
-        public MemberApiController(IMemberService memberService)
+        private readonly IBookHistoryService _bookHistoryService;
+        public MemberApiController(IMemberService memberService, IBookHistoryService bookHistoryService)
         {
             _memberService = memberService;
+            _bookHistoryService = bookHistoryService;
         }
         [HttpGet]
         public IActionResult MemberList()
@@ -44,16 +48,65 @@ namespace ProjeDemo1.API.Controllers
             return Ok();
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetMemberById(int id)
+        [HttpGet("{userId}")]
+        public IActionResult GetUserProfile(int userId)
         {
-            var member =  _memberService.TGetById(id);
-            if (member == null)
+            var user = _memberService.TGetById(userId);
+            if (user == null)
             {
-                return NotFound();
+                return NotFound(); // Kullanıcı bulunamadıysa 404 hatası gönder
             }
-            return Ok(member);
+            return Ok(user); // Kullanıcıyı JSON formatında döndür
         }
+
+
+
+
+        [HttpPost("borrow/{bookId}")]
+        public IActionResult BorrowBook(int bookId)
+        {
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+
+            if (!string.IsNullOrEmpty(userId))
+            {
+
+                var book = _bookHistoryService.TGetById(bookId);
+
+
+                if (book != null)
+                {
+
+                    if (book.Status == CSProjeDemo1.Enums.Status.Mevcut)
+                    {
+                        book.Status = CSProjeDemo1.Enums.Status.ÖdünçAlındı;
+                        _bookHistoryService.TUpdate(book);
+                        return Ok();
+                    }
+                    else if (book.Status == CSProjeDemo1.Enums.Status.ÖdünçAlındı)
+                    {
+
+                        return BadRequest("Seçilen kitap zaten ödünç alınmış durumda.");
+                    }
+                    else
+                    {
+
+                        return BadRequest("Seçilen kitap mevcut değil veya başka bir durumda.");
+                    }
+                }
+                else
+                {
+
+                    return NotFound("Seçilen kitap bulunamadı.");
+                }
+            }
+            else
+            {
+
+                return Unauthorized("Kullanıcı oturumda değil.");
+            }
+        }
+
 
 
 
